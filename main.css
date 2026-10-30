@@ -35,6 +35,8 @@
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-card: 0.7s;  /* hover карточек (разделы, «почему мы», шаги) */
+  --t-hover: 0.35s; /* скорость hover-эффектов: правится в одном месте */
 
   /* Слои (z-index) в одном месте */
   --z-bg: -3;
@@ -177,7 +179,7 @@ body[data-page="reviews"] .page-glow {
   z-index: var(--z-header);
   height: var(--header-h);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease;
+  transition: border-color var(--t-hover) ease;
 }
 
 /* Фон и blur шапки вынесены в псевдоэлемент: backdrop-filter на самой
@@ -192,7 +194,7 @@ body[data-page="reviews"] .page-glow {
   background: rgba(11, 11, 13, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: background 0.25s ease;
+  transition: background var(--t-hover) ease;
 }
 
 .site-header.scrolled { border-color: var(--border); }
@@ -227,7 +229,7 @@ body[data-page="reviews"] .page-glow {
   width: 24px;
   border-radius: 2px;
   background: #c9c9cf;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform var(--t-hover) ease, opacity var(--t-hover) ease;
 }
 .burger:hover span { background: var(--accent); }
 .burger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
@@ -243,7 +245,7 @@ body[data-page="reviews"] .page-glow {
   text-decoration-color: rgba(255, 255, 255, 0.28);
   text-decoration-thickness: 1px;
   text-underline-offset: 7px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition: color var(--t-hover) ease, text-decoration-color var(--t-hover) ease;
 }
 .nav-link:hover { color: var(--text); text-decoration-color: var(--accent); }
 .nav-link.active { color: var(--text); text-decoration-color: var(--accent); }
@@ -277,7 +279,7 @@ body[data-page="reviews"] .page-glow {
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: transform var(--t-hover) ease, box-shadow var(--t-hover) ease, background var(--t-hover) ease, border-color var(--t-hover) ease, color var(--t-hover) ease;
 }
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
@@ -431,7 +433,7 @@ body[data-page="reviews"] .page-glow {
    режет тень по границе файла и вокруг телефона появляется «рамка» */
 .hero-photo-tilt {
   height: 100%;
-  transition: transform 0.25s ease-out;
+  transition: transform var(--t-hover) ease-out;
   filter:
     drop-shadow(0 0 40px rgba(255, 122, 26, 0.26))
     drop-shadow(0 0 90px rgba(255, 94, 0, 0.16));
@@ -611,7 +613,7 @@ section { position: relative; padding: 96px 0; }
   -webkit-backdrop-filter: blur(12px);
   text-decoration: none;
   overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: transform var(--t-card) var(--ease-out), border-color var(--t-card) var(--ease-out), background var(--t-card) var(--ease-out);
 }
 .cat-card:hover {
   transform: translateY(-6px);
@@ -636,7 +638,7 @@ section { position: relative; padding: 96px 0; }
   border-radius: 50%;
   border: 1px solid var(--border);
   color: var(--accent);
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition: transform var(--t-card) var(--ease-out), background var(--t-card) var(--ease-out), border-color var(--t-card) var(--ease-out);
 }
 .cat-card:hover .cat-arrow {
   transform: translateX(6px);
@@ -671,7 +673,7 @@ section { position: relative; padding: 96px 0; }
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: transform var(--t-card) var(--ease-out), border-color var(--t-card) var(--ease-out), background var(--t-card) var(--ease-out);
 }
 .adv-card:hover {
   transform: translateY(-6px);
@@ -714,7 +716,7 @@ section { position: relative; padding: 96px 0; }
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition: transform var(--t-card) var(--ease-out), border-color var(--t-card) var(--ease-out);
 }
 .step:hover { transform: translateX(6px); border-color: var(--border-hover); }
 .step-num {
@@ -866,7 +868,7 @@ section { position: relative; padding: 96px 0; }
   text-decoration: none;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform var(--t-hover) ease, border-color var(--t-hover) ease;
 }
 .map-pano-link { left: 16px; border-color: var(--border-hover); }
 .map-open-link { right: 16px; }
@@ -1190,7 +1192,7 @@ section { position: relative; padding: 96px 0; }
   border-radius: 18px;
   background: #fff;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--t-hover) ease, box-shadow var(--t-hover) ease;
 }
 .chip:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.45); }
 .chip svg { width: 30px; height: 30px; }
@@ -1210,7 +1212,7 @@ section { position: relative; padding: 96px 0; }
   background: #fbfbfd;
   color: #1c1c21;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform var(--t-hover) ease, box-shadow var(--t-hover) ease;
 }
 .review-card:hover {
   transform: translateY(-4px);
@@ -1294,7 +1296,7 @@ section { position: relative; padding: 96px 0; }
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   color: var(--text);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color var(--t-hover) ease, background var(--t-hover) ease;
 }
 .field textarea { resize: vertical; min-height: 96px; }
 
@@ -1368,7 +1370,7 @@ section { position: relative; padding: 96px 0; }
   text-decoration: none;
   padding: 5px 0;
   font-size: 15px;
-  transition: color 0.2s ease;
+  transition: color var(--t-hover) ease;
 }
 .footer-col a:hover { color: var(--accent); }
 .footer-col a.logo { display: inline-flex; padding: 0; }
@@ -1426,6 +1428,18 @@ section { position: relative; padding: 96px 0; }
   transform: none;
 }
 
+/* Карточки с анимацией появления: появление — 0.7s, hover — медленнее и плавнее.
+   Нужно отдельное правило, иначе .js .reveal перебивает их transition. */
+.js .cat-card.reveal,
+.js .adv-card.reveal,
+.js .step.reveal {
+  transition:
+    opacity 0.7s ease,
+    transform var(--t-card) var(--ease-out),
+    border-color var(--t-card) ease,
+    background var(--t-card) ease;
+}
+
 /* Без JS полоски в карточках рассрочки сразу заполнены */
 html:not(.js) .num-card .bar i { transform: scaleX(var(--bar, 0.5)); }
 
@@ -1462,26 +1476,20 @@ html:not(.js) .num-card .bar i { transform: scaleX(var(--bar, 0.5)); }
   /* ---------- Мобильная боковая панель ---------- */
   .site-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    inset: 0 auto 0 0;
     z-index: var(--z-nav);
-    width: min(244px, 64vw);
+    width: min(320px, 84vw);
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: calc(var(--header-h) + 16px) 20px max(24px, env(safe-area-inset-bottom));
+    padding: calc(var(--header-h) + 12px) 28px max(28px, env(safe-area-inset-bottom));
     overflow-y: auto;
     overscroll-behavior: contain;
-    /* Плашка непрозрачная (без blur) + тёплое свечение снизу */
-    background:
-      radial-gradient(120% 55% at 0% 100%, rgba(255, 94, 0, 0.18), transparent 65%),
-      #0d0d10;
+    background: #0c0c0f;
     border-right: 1px solid var(--border);
-    border-radius: 0 28px 28px 0;
-    box-shadow: 40px 0 80px rgba(0, 0, 0, 0.55);
-    transform: translateX(-102%);
+    box-shadow: 24px 0 64px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.38s var(--ease-out), visibility 0.38s;
   }
@@ -1490,87 +1498,105 @@ html:not(.js) .num-card .bar i { transform: scaleX(var(--bar, 0.5)); }
     visibility: visible;
   }
 
+  /* Подпись раздела */
+  .site-nav::before {
+    content: "Меню";
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Пункты: крупный текст без рамок, активный — с оранжевым квадратом */
   .site-nav .nav-link {
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 14px 4px;
-    font-size: 20px;
-    font-weight: 650;
-    letter-spacing: -0.015em;
-    color: var(--text);
+    padding: 11px 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #8d8d95;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     opacity: 0;
-    transform: translateX(-14px);
-    transition: opacity 0.35s ease, transform 0.35s ease, color 0.2s ease;
+    transform: translateX(-12px);
+    transition: opacity 0.35s ease, transform 0.35s ease, color var(--t-hover) ease;
   }
-  .site-nav .nav-link:first-child { border-top: 1px solid rgba(255, 255, 255, 0.07); }
-
-  /* Шеврон справа */
-  .site-nav .nav-link::after {
-    content: '';
-    width: 9px;
-    height: 9px;
-    border-top: 2px solid #6f6f78;
-    border-right: 2px solid #6f6f78;
-    transform: rotate(45deg);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+  .site-nav .nav-link::before {
+    content: "";
+    flex: none;
+    width: 0;
+    height: 10px;
+    margin-right: 0;
+    border-radius: 2px;
+    background: var(--accent);
+    transition: width var(--t-hover) var(--ease-out), margin-right var(--t-hover) var(--ease-out);
   }
   .site-nav .nav-link:hover,
-  .site-nav .nav-link:active { color: var(--accent); }
-  .site-nav .nav-link:hover::after { transform: translateX(3px) rotate(45deg); border-color: var(--accent); }
-
-  /* Текущая страница: оранжевая метка слева */
-  .site-nav .nav-link.active { color: var(--accent); }
-  .site-nav .nav-link.active::after { border-color: var(--accent); }
+  .site-nav .nav-link:focus-visible { color: var(--text); }
+  .site-nav .nav-link.active { color: var(--text); }
   .site-nav .nav-link.active::before {
-    content: '';
-    position: absolute;
-    left: -20px;
-    top: 24%;
-    bottom: 24%;
-    width: 4px;
-    border-radius: 0 4px 4px 0;
-    background: var(--accent);
-    box-shadow: 0 0 14px rgba(255, 122, 26, 0.7);
+    width: 10px;
+    margin-right: 14px;
   }
+  .site-nav .nav-link:last-of-type { margin-bottom: 28px; }
 
-  /* Ссылки выезжают по очереди, когда панель открыта */
+  /* Пункты выезжают по очереди, когда панель открыта */
   .site-nav.open .nav-link { opacity: 1; transform: none; }
-  .site-nav.open .nav-link:nth-child(1) { transition-delay: 0.10s; }
-  .site-nav.open .nav-link:nth-child(2) { transition-delay: 0.15s; }
-  .site-nav.open .nav-link:nth-child(3) { transition-delay: 0.20s; }
-  .site-nav.open .nav-link:nth-child(4) { transition-delay: 0.25s; }
-  .site-nav.open .nav-link:nth-child(5) { transition-delay: 0.30s; }
+  .site-nav.open .nav-link:nth-of-type(1) { transition-delay: 0.08s; }
+  .site-nav.open .nav-link:nth-of-type(2) { transition-delay: 0.12s; }
+  .site-nav.open .nav-link:nth-of-type(3) { transition-delay: 0.16s; }
+  .site-nav.open .nav-link:nth-of-type(4) { transition-delay: 0.20s; }
+  .site-nav.open .nav-link:nth-of-type(5) { transition-delay: 0.24s; }
 
-  /* Контакты внизу панели */
+  /* Связь внизу панели */
   .site-nav .nav-extra {
     margin-top: auto;
     display: grid;
     gap: 10px;
-    padding-top: 28px;
-    color: var(--muted);
-    font-size: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
-  .site-nav .nav-extra p { margin: 0; }
-  .site-nav .nav-extra a { text-decoration: none; }
-  .site-nav .nav-extra p:nth-child(2) a {
-    display: block;
-    font-size: 17px;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-    color: var(--text);
+  .site-nav .nav-extra p {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .site-nav .nav-extra .btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
   }
 
-  /* Затемнение страницы под открытым меню */
+  /* Затемнение страницы под открытой панелью */
   body.no-scroll::after {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     z-index: calc(var(--z-nav) - 5);
-    background: rgba(0, 0, 0, 0.62);
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    animation: navFade 0.3s ease both;
+  }
+  @keyframes navFade { from { opacity: 0; } }
+
+  /* Пока панель открыта, шапка прозрачная, а логотип не мешает панели */
+  body.no-scroll .site-header { border-color: transparent; }
+  body.no-scroll .site-header::before {
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .logo { transition: opacity 0.2s ease; }
+  body.no-scroll .logo { opacity: 0; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav,
+    .site-nav .nav-link,
+    body.no-scroll::after { transition: none; animation: none; }
   }
 
   /* Hero на телефоне: текст сверху, iPhone выходит из нижнего края */
@@ -1658,7 +1684,7 @@ html:not(.js) .num-card .bar i { transform: scaleX(var(--bar, 0.5)); }
   color: var(--accent);
   background: rgba(255, 122, 26, 0.12);
   border: 1px solid rgba(255, 122, 26, 0.35);
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background var(--t-hover) ease, color var(--t-hover) ease, transform var(--t-hover) ease;
 }
 .social-ico svg { width: 20px; height: 20px; margin-left: -1px; }
 .footer-col a.social-link:hover .social-ico,
